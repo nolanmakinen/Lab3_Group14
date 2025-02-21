@@ -47,8 +47,29 @@ class TestShapes(unittest.TestCase):
 
     # Rhombus Tests
     def test_rhombus_area_valid(self):
+        # Standard case
+        self.assertEqual(rhombus_area(10, 5), 25)
 
+        # Case where diagonals are zero, area should be 0
+        self.assertEqual(rhombus_area(0, 10), 0)
+        self.assertEqual(rhombus_area(10, 0), 0)
+
+        # Case where diagonals are the same (should still work as normal)
+        self.assertEqual(rhombus_area(5, 5), 12.5)
+
+    # Test invalid rhombus area cases
     def test_rhombus_area_invalid(self):
+        # Negative values should raise an error
+        with self.assertRaises(ValueError):
+            rhombus_area(-10, 5)
+        with self.assertRaises(ValueError):
+            rhombus_area(10, -5)
+
+        # Non-numeric inputs should raise a TypeError
+        with self.assertRaises(TypeError):
+            rhombus_area("a", 120)
+        with self.assertRaises(TypeError):
+            rhombus_area(10, "b")
 
 if __name__ == "__main__":
     unittest.main()
