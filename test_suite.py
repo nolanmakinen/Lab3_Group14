@@ -29,7 +29,7 @@ def run_tests(choice):
 if __name__ == "__main__":
     while True:
         print("\nEnter a shape to test ('c' for Circle, 't' for Trapezium, 'e' for Ellipse, 'r' for Rhombus, 'q' to quit):")
-        choice = input("Your choice: ").strip().lower()
+        choice = input("Your choice: ")
         if choice == 'q':
             break
         run_tests(choice)
