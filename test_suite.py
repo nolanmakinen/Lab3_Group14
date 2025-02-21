@@ -1,35 +1,35 @@
 import unittest
-from test.Lab3_Nolan_Princess import TestShapes
 
+# Import the TestShapes class
+from test.test_Lab3_Nolan_Princess import TestShapes
 
 def run_tests(choice):
     loader = unittest.TestLoader()
+    suite = unittest.TestSuite()
 
     if choice == 'c':
-        suite = loader.loadTestsFromTestCase(TestShapes)
-        tests = [t for t in suite if 'circle_area' in t.id()]
+        suite.addTests(loader.loadTestsFromName('test.test_Lab3_Nolan_Princess.TestShapes.test_circle_area_valid'))
+        suite.addTests(loader.loadTestsFromName('test.test_Lab3_Nolan_Princess.TestShapes.test_circle_area_invalid'))
     elif choice == 't':
-        suite = loader.loadTestsFromTestCase(TestShapes)
-        tests = [t for t in suite if 'trapezium_area' in t.id()]
+        suite.addTests(loader.loadTestsFromName('test.test_Lab3_Nolan_Princess.TestShapes.test_trapezium_area_valid'))
+        suite.addTests(loader.loadTestsFromName('test.test_Lab3_Nolan_Princess.TestShapes.test_trapezium_area_invalid'))
     elif choice == 'e':
-        suite = loader.loadTestsFromTestCase(TestShapes)
-        tests = [t for t in suite if 'ellipse_area' in t.id()]
+        suite.addTests(loader.loadTestsFromName('test.test_Lab3_Nolan_Princess.TestShapes.test_ellipse_area_valid'))
+        suite.addTests(loader.loadTestsFromName('test.test_Lab3_Nolan_Princess.TestShapes.test_ellipse_area_invalid'))
     elif choice == 'r':
-        suite = loader.loadTestsFromTestCase(TestShapes)
-        tests = [t for t in suite if 'rhombus_area' in t.id()]
+        suite.addTests(loader.loadTestsFromName('test.test_Lab3_Nolan_Princess.TestShapes.test_rhombus_area_valid'))
+        suite.addTests(loader.loadTestsFromName('test.test_Lab3_Nolan_Princess.TestShapes.test_rhombus_area_invalid'))
     else:
-        print("Invalid choice. Exiting.")
+        print("Invalid choice. Please try again.")
         return
 
-    if tests:
-        shape_suite = unittest.TestSuite(tests)
-        runner = unittest.TextTestRunner()
-        runner.run(shape_suite)
-    else:
-        print(f"No tests found for choice '{choice}'.")
-
+    runner = unittest.TextTestRunner()
+    runner.run(suite)
 
 if __name__ == "__main__":
-    print("Enter a shape to test ('c' for Circle, 't' for Trapezium, 'e' for Ellipse, 'r' for Rhombus):")
-    choice = input().strip().lower()
-    run_tests(choice)
+    while True:
+        print("\nEnter a shape to test ('c' for Circle, 't' for Trapezium, 'e' for Ellipse, 'r' for Rhombus, 'q' to quit):")
+        choice = input("Your choice: ").strip().lower()
+        if choice == 'q':
+            break
+        run_tests(choice)
