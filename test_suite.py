@@ -1,4 +1,5 @@
 import unittest
+import time
 
 # Import the TestShapes class
 from test.test_Lab3_Nolan_Princess import TestShapes
@@ -28,6 +29,7 @@ def run_tests(choice):
 
 if __name__ == "__main__":
     while True:
+        time.sleep(0.1)
         print("\nEnter a shape to test ('c' for Circle, 't' for Trapezium, 'e' for Ellipse, 'r' for Rhombus, 'q' to quit):")
         choice = input("Your choice: ")
         if choice == 'q':
