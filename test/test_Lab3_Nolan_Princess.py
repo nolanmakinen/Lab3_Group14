@@ -1,5 +1,5 @@
 import unittest
-from app.Lab3_firstname1_firstname2 import circle_area, trapezium_area, ellipse_area, rhombus_area
+from app.Lab3_Nolan_Princess import circle_area, trapezium_area, ellipse_area, rhombus_area
 
 
 class TestShapes(unittest.TestCase):
@@ -17,29 +17,38 @@ class TestShapes(unittest.TestCase):
         with self.assertRaises(ValueError):
             circle_area(-1)
 
-//
+    # Trapezium Area Tests
+
 
 def test_trapezium_area_valid(self):
-    //
+    self.assertAlmostEqual(trapezium_area(3, 4, 5), 17.5)
 
-    def test_trapezium_area_invalid(self):
 
-    //
+def test_trapezium_area_invalid(self):
+    with self.assertRaises(ValueError):
+        trapezium_area(-3, 4, 5)
 
-    def test_ellipse_area_valid(self):
+    # Ellipse Area Tests
 
-    //
 
-    def test_ellipse_area_invalid(self):
+def test_ellipse_area_valid(self):
+    self.assertAlmostEqual(ellipse_area(3, 5), 47.12388980384689)
 
-    //
 
-    def test_rhombus_area_valid(self):
+def test_ellipse_area_invalid(self):
+    with self.assertRaises(ValueError):
+        ellipse_area(-3, 5)
 
-    //
+    # Rhombus Area Tests
 
-    def test_rhombus_area_invalid(self):
 
+def test_rhombus_area_valid(self):
+    self.assertAlmostEqual(rhombus_area(4, 6), 12.0)
+
+
+def test_rhombus_area_invalid(self):
+    with self.assertRaises(ValueError):
+        rhombus_area(-4, 6)
 
 if __name__ == "__main__":
     unittest.main()
